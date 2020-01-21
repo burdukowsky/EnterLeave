@@ -2,6 +2,7 @@ package tk.burdukowsky.enter_leave
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ListView
 
 class MainActivity : AppCompatActivity() {
@@ -9,13 +10,34 @@ class MainActivity : AppCompatActivity() {
     private val actionDao = ActionDao()
 
     private lateinit var lvActions: ListView
+    private lateinit var actionListAdapter: ActionListAdapter
+    private lateinit var actions: MutableList<Action>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        actions = actionDao.queryForAll()
         lvActions = findViewById(R.id.lvActions)
-        lvActions.adapter = ActionListAdapter(this, this.actionDao.queryForAll())
+        actionListAdapter = ActionListAdapter(this, actions)
+        lvActions.adapter = actionListAdapter
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    fun leaveButtonClick(view: View) {
+        addAction(ActionType.LEAVE)
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    fun enterButtonClick(view: View) {
+        addAction(ActionType.ENTER)
+    }
+
+    private fun addAction(type: ActionType) {
+        val action = Action(null, type, getCurrentMilliseconds())
+        actionDao.add(action)
+        actions.add(action)
+        actionListAdapter.notifyDataSetChanged()
     }
 
 }
