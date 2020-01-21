@@ -7,8 +7,6 @@ import android.widget.ListView
 
 class MainActivity : AppCompatActivity() {
 
-    private val actionDao = ActionDao()
-
     private lateinit var lvActions: ListView
     private lateinit var actionListAdapter: ActionListAdapter
     private lateinit var actions: MutableList<Action>
@@ -17,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        actions = actionDao.queryForAll()
+        actions = ActionDao.queryForAll()
         lvActions = findViewById(R.id.lvActions)
         actionListAdapter = ActionListAdapter(this, actions)
         lvActions.adapter = actionListAdapter
@@ -35,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun addAction(type: ActionType) {
         val action = Action(null, type, getCurrentMilliseconds())
-        actionDao.add(action)
+        ActionDao.add(action)
         actions.add(action)
         actionListAdapter.notifyDataSetChanged()
     }

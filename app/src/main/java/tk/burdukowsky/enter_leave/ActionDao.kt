@@ -1,22 +1,17 @@
 package tk.burdukowsky.enter_leave
 
 import com.j256.ormlite.dao.Dao
+import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus
 
-class ActionDao {
+object ActionDao {
 
-    companion object {
-        lateinit var dao: Dao<Action, Int>
-    }
+    private val dao: Dao<Action, Int> = DatabaseHelper.getDao(Action::class.java)
 
-    init {
-        dao = DatabaseHelper.getDao(Action::class.java)
-    }
+    fun add(action: Action): CreateOrUpdateStatus = dao.createOrUpdate(action)
 
-    fun add(action: Action) = dao.createOrUpdate(action)
+    fun update(action: Action): Int = dao.update(action)
 
-    fun update(action: Action) = dao.update(action)
-
-    fun delete(action: Action) = dao.delete(action)
+    fun delete(action: Action): Int = dao.delete(action)
 
     fun queryForAll(): MutableList<Action> = dao.queryForAll()
 
