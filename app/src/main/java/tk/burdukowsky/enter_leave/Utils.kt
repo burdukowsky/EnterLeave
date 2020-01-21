@@ -14,9 +14,9 @@ val currentLocale: Locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) 
 }
 
 val df: DateFormat = if (currentLocale == ruLocale) {
-    SimpleDateFormat("dd.MM.yy HH:mm", ruLocale)
+    SimpleDateFormat("dd.MM.yy HH:mm:ss", ruLocale)
 } else {
-    DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, currentLocale)
+    DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, currentLocale)
 }
 
 fun getCurrentMilliseconds(): Long {
