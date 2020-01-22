@@ -19,7 +19,8 @@ class ActionListAdapter(
         val view: View = convertView ?: layoutInflater.inflate(R.layout.action, parent, false)
         val entity = getItem(position)
         val formattedTime = Utils.millisecondsToFormattedTime(entity.time)
-        view.findViewById<TextView>(R.id.tvActionDate).text = formattedTime.date
+        view.findViewById<TextView>(R.id.tvActionDate).text =
+            String.format("(%s)", formattedTime.date)
         view.findViewById<TextView>(R.id.tvActionTime).text = formattedTime.time
         view.findViewById<TextView>(R.id.tvActionType).text = entity.type.getResource()
         view.findViewById<ImageView>(R.id.ivActionDelete).setOnClickListener {
