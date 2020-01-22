@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Enter-Leave</string>
+    <string name="app_name">Turnstile</string>
     <string name="delete_button_description">Delete</string>
     <string name="enter">Enter</string>
     <string name="leave">Leave</string>
