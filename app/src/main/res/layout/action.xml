@@ -47,6 +47,6 @@
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:text="×" />
+        android:text="@string/icon_times" />
 
 </LinearLayout>
