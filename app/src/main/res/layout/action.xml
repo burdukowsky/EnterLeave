@@ -42,11 +42,11 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivActionDelete"
+    <Button
+        android:id="@+id/buttonActionDelete"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/delete_button_description"
-        android:src="@drawable/trash" />
+        android:text="×" />
 
 </LinearLayout>

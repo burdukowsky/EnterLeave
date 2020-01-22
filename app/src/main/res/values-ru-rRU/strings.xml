@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Турникет</string>
-    <string name="delete_button_description">Удалить</string>
     <string name="enter">Вошел</string>
     <string name="leave">Вышел</string>
 </resources>

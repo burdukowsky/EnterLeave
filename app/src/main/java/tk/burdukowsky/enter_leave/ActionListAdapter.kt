@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.TextView
 
 class ActionListAdapter(
@@ -23,7 +23,7 @@ class ActionListAdapter(
             String.format("(%s)", formattedTime.date)
         view.findViewById<TextView>(R.id.tvActionTime).text = formattedTime.time
         view.findViewById<TextView>(R.id.tvActionType).text = entity.type.getResource()
-        view.findViewById<ImageView>(R.id.ivActionDelete).setOnClickListener {
+        view.findViewById<Button>(R.id.buttonActionDelete).setOnClickListener {
             (context as ActionDeleter).deleteAction(entity)
         }
         return view
