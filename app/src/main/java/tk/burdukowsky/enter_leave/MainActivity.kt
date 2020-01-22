@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ActionDeleter {
 
     private lateinit var lvActions: ListView
     private lateinit var actionListAdapter: ActionListAdapter
@@ -35,6 +35,12 @@ class MainActivity : AppCompatActivity() {
         val action = Action(null, type, getCurrentMilliseconds())
         ActionDao.add(action)
         actions.add(action)
+        actionListAdapter.notifyDataSetChanged()
+    }
+
+    override fun deleteAction(action: Action) {
+        ActionDao.delete(action)
+        actions.remove(action)
         actionListAdapter.notifyDataSetChanged()
     }
 

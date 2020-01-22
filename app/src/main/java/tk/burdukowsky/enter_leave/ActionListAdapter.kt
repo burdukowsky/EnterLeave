@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 
 class ActionListAdapter(
     private var context: Context,
@@ -22,13 +21,7 @@ class ActionListAdapter(
         view.findViewById<TextView>(R.id.tvActionTime).text = formatMilliseconds(entity.time)
         view.findViewById<TextView>(R.id.tvActionType).text = entity.type.getResource()
         view.findViewById<ImageView>(R.id.ivActionDelete).setOnClickListener {
-            Toast
-                .makeText(
-                    context,
-                    "Callback",
-                    Toast.LENGTH_SHORT
-                )
-                .show()
+            (context as ActionDeleter).deleteAction(entity)
         }
         return view
     }
