@@ -18,7 +18,9 @@ class ActionListAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View = convertView ?: layoutInflater.inflate(R.layout.action, parent, false)
         val entity = getItem(position)
-        view.findViewById<TextView>(R.id.tvActionTime).text = formatMilliseconds(entity.time)
+        val formattedTime = Utils.millisecondsToFormattedTime(entity.time)
+        view.findViewById<TextView>(R.id.tvActionDate).text = formattedTime.date
+        view.findViewById<TextView>(R.id.tvActionTime).text = formattedTime.time
         view.findViewById<TextView>(R.id.tvActionType).text = entity.type.getResource()
         view.findViewById<ImageView>(R.id.ivActionDelete).setOnClickListener {
             (context as ActionDeleter).deleteAction(entity)

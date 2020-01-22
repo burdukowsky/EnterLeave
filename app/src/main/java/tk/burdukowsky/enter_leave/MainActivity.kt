@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), ActionDeleter {
     }
 
     private fun addAction(type: ActionType) {
-        val action = Action(null, type, getCurrentMilliseconds())
+        val action = Action(null, type, Utils.getCurrentMilliseconds())
         ActionDao.add(action)
         actions.add(action)
         actionListAdapter.notifyDataSetChanged()
