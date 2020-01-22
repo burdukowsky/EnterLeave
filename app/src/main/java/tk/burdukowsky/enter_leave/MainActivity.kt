@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity(), ActionDeleter {
         ActionDao.add(action)
         actions.add(action)
         actionListAdapter.notifyDataSetChanged()
+        smoothScrollToBottom()
+    }
+
+    private fun smoothScrollToBottom() {
+        lvActions.post { run { lvActions.smoothScrollToPosition(actionListAdapter.count) } }
     }
 
     override fun deleteAction(action: Action) {
