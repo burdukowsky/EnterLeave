@@ -44,9 +44,11 @@
 
     <Button
         android:id="@+id/buttonActionDelete"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="40dp"
+        android:layout_width="36sp"
         android:layout_height="wrap_content"
-        android:text="@string/icon_times" />
+        android:background="@android:color/transparent"
+        android:text="@string/icon_times"
+        android:textColor="@color/colorDanger"
+        android:textSize="36sp" />
 
 </LinearLayout>
