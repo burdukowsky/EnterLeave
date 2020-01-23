@@ -1,40 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/lvActions"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:stackFromBottom="true" />
-
-    <LinearLayout
-        style="?android:attr/buttonBarStyle"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="enterButtonClick"
-            android:text="@string/enter" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="leaveButtonClick"
-            android:text="@string/leave" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    </LinearLayout>
+    <include layout="@layout/content_main" />
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

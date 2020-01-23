@@ -3,4 +3,6 @@
     <string name="app_name">Турникет</string>
     <string name="enter">Вошел</string>
     <string name="leave">Вышел</string>
+    <string name="action_delete_all_but_last">Удалить все кроме последнего</string>
+    <string name="action_delete_all">Удалить все</string>
 </resources>
