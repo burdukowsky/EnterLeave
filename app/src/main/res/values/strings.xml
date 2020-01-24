@@ -4,4 +4,7 @@
     <string name="leave">Leave</string>
     <string name="action_delete_all_but_last">Delete all but the last</string>
     <string name="action_delete_all">Delete all</string>
+    <string name="confirmation_message">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

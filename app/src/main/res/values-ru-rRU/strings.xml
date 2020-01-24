@@ -5,4 +5,7 @@
     <string name="leave">Вышел</string>
     <string name="action_delete_all_but_last">Удалить все кроме последнего</string>
     <string name="action_delete_all">Удалить все</string>
+    <string name="confirmation_message">Вы уверены?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>
