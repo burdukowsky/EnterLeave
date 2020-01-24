@@ -1,6 +1,5 @@
 package tk.burdukowsky.enter_leave
 
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -35,13 +34,13 @@ class MainActivity : AppCompatActivity(), ActionDeleter {
         return when (item.itemId) {
             R.id.actionDeleteAllButLast -> {
                 ConfirmationDialogFragment(
-                    positiveOnClickListener = DialogInterface.OnClickListener { _, _ -> deleteAllActionsButLast() }
+                    positiveOnClickListener = Runnable { deleteAllActionsButLast() }
                 ).show(supportFragmentManager, "deleteAllButLastConfirmationDialog")
                 true
             }
             R.id.actionDeleteAll -> {
                 ConfirmationDialogFragment(
-                    positiveOnClickListener = DialogInterface.OnClickListener { _, _ -> deleteAllActions() }
+                    positiveOnClickListener = Runnable { deleteAllActions() }
                 ).show(supportFragmentManager, "deleteAllConfirmationDialog")
                 true
             }
