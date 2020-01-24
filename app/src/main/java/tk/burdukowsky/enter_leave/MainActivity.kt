@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ListView
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ActionDeleter {
@@ -34,11 +33,11 @@ class MainActivity : AppCompatActivity(), ActionDeleter {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.actionDeleteAllButLast -> {
-                Toast.makeText(this, "DeleteAllButLast", Toast.LENGTH_SHORT).show()
+                deleteAllActionsButLast()
                 true
             }
             R.id.actionDeleteAll -> {
-                Toast.makeText(this, "DeleteAll", Toast.LENGTH_SHORT).show()
+                deleteAllActions()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -63,14 +62,29 @@ class MainActivity : AppCompatActivity(), ActionDeleter {
         smoothScrollToBottom()
     }
 
-    private fun smoothScrollToBottom() {
-        lvActions.post { run { lvActions.smoothScrollToPosition(actionListAdapter.count) } }
+    private fun deleteAllActions() {
+        ActionDao.deleteAll()
+        actions.clear()
+        actionListAdapter.notifyDataSetChanged()
+    }
+
+    private fun deleteAllActionsButLast() {
+        if (actions.size > 1) {
+            val actionsForDelete = actions.subList(0, actions.size - 1)
+            ActionDao.deleteIds(actionsForDelete.map { action -> action.id!! })
+            actionsForDelete.clear()
+            actionListAdapter.notifyDataSetChanged()
+        }
     }
 
     override fun deleteAction(action: Action) {
         ActionDao.delete(action)
         actions.remove(action)
         actionListAdapter.notifyDataSetChanged()
+    }
+
+    private fun smoothScrollToBottom() {
+        lvActions.post { run { lvActions.smoothScrollToPosition(actionListAdapter.count) } }
     }
 
 }

@@ -15,10 +15,12 @@ object ActionDao {
 
     fun queryForAll(): MutableList<Action> = dao.queryForAll()
 
-    fun removeAll() {
+    fun deleteAll() {
         for (entity in queryForAll()) {
             dao.delete(entity)
         }
     }
+
+    fun deleteIds(ids: Collection<Int>): Int = dao.deleteIds(ids)
 
 }
